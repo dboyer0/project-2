@@ -8,7 +8,10 @@ const Login = () =>{
             <form>
                 <input type="text" placeholder="Enter Username" />
                 <input type="password" placeholder="Enter Password" />
-                <button onClick={() => console.log("Form Submitted")}>Login</button>
+                <button onClick={(e) => {
+                    e.preventDefault();
+                    console.log("Form Submitted")
+                }}>Login</button>
             </form>
         </Fragment>
     );
