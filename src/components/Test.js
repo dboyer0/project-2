@@ -1,42 +1,27 @@
 import { connect } from "react-redux";
 import { toggleTest } from "../actions/tests";
 
-const Test = () => {
+const Test = ({ isVisible }) => {
     return (
         <div>
             <h2>Test Toggle</h2>
-            <button disabled="false" onClick={() => {
+            <p>{isVisible ? "true" : "false"}</p>
+
+            <button onClick={() => {
+                console.log("Toggled Visibility [BEFORE]: ", isVisible)
                 this.props.toggleVisibility()
+                console.log("Toggled Visibility [AFTER]: ", isVisible)
             }}>Toggle</button>
         </div>
     );
 }
 
-const mapStateToProps = state => ({
-    disabled: getDisabled(state)
+const mapStateToProps = isVisible => ({
+    isVisible
 });
 
 const mapDispatchToProps = dispatch => ({
     toggleVisibility: () => dispatch(toggleTest())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
-
-// EXAMPLE
-// import { connect } from 'react-redux';
-// import { toggleVisibility } from '../actions';
-
-// const mapStateToProps = state => ({
-//   disabled: getDisabled(state),
-// });
-
-// const mapDispatchToProps = {
-//   toggleVisibility,
-// };
-
-// const MyComponent = ({ disabled, toggleVisibility }) => (
-//   <button disabled={disabled} onClick={toggleVisibility}>Toggle</button>
-// );
-
-// export default connect(mapStateToProps, mapDispatchToProps)(MyComponent);
-  
+export default connect(mapStateToProps, mapDispatchToProps)(Test); 
