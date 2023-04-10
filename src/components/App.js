@@ -1,11 +1,17 @@
 import { Fragment } from "react";
-import Test from "./Test";
+import {Route, Routes} from "react-router-dom";
+import Nav from "./Nav";
+import Login from "./Login";
 
 const App = () => {
   return (
     <Fragment>
-      <h1>Employee Polling</h1>
-      <Test />
+      <Nav />
+      <div className="container">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
     </Fragment>
   );
 }
