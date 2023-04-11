@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
     Fragment,
     useState
@@ -59,6 +60,11 @@ const Login = ({ dispatch, users }) => {
             </form>
         </Fragment>
     );
+}
+
+Login.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    users: PropTypes.object.isRequired
 }
 
 const mapStateToProps = ({ users }) => {
