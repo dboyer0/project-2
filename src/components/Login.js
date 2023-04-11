@@ -2,8 +2,10 @@ import {
     Fragment,
     useState
 } from "react";
+import { connect } from "react-redux";
+import { setAuthedUser } from "../actions/authedUser";
 
-const Login = () => {
+const Login = ({ dispatch, users }) => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -18,8 +20,14 @@ const Login = () => {
     const handleClick = (e) => {
         e.preventDefault();
         console.log("Creds: ", username, password);
+
+        const user = users[username];
+        if(user && user.password === password){
+            dispatch(setAuthedUser(username));
+        } //TODO handle error/failed attempt
     };
 
+    console.log("Users list: ", users);
     console.log("Username: ", username);
     console.log("Password: ", password);
 
@@ -53,4 +61,10 @@ const Login = () => {
     );
 }
 
-export default Login;
+const mapStateToProps = ({ users }) => {
+    return {
+        users
+    };
+}
+
+export default connect(mapStateToProps)(Login);
