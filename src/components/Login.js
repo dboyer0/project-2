@@ -29,12 +29,14 @@ const Login = () => {
 
             <form>
                 <input
+                    id="username"
                     type="text"
                     placeholder="Enter Username"
                     onChange={handleChange}
                 />
 
                 <input
+                    id="password"
                     type="password"
                     placeholder="Enter Password"
                     onChange={handleChange}
