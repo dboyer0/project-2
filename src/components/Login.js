@@ -15,6 +15,11 @@ const Login = () => {
         option === "username" ? setUsername(text) : setPassword(text);
     };
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        console.log("Creds: ", username, password);
+    };
+
     console.log("Username: ", username);
     console.log("Password: ", password);
 
@@ -35,10 +40,12 @@ const Login = () => {
                     onChange={handleChange}
                 />
 
-                <button onClick={(e) => {
-                    e.preventDefault();
-                    console.log("Form Submitted")
-                }}>Login</button>
+                <button
+                    onClick={handleClick}
+                    disabled={username === "" || password === ""}
+                >
+                    Login
+                </button>
             </form>
         </Fragment>
     );
