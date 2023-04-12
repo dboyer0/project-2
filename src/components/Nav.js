@@ -1,7 +1,11 @@
+import { Fragment } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { resetAuthedUser } from "../actions/authedUser";
 
-const Nav = ({ authedUser, users }) =>{
+const Nav = ({ authedUser, users, dispatch }) =>{
+
+    const navigate = useNavigate();
 
     let user = null;
     // is user authorized?
@@ -9,18 +13,25 @@ const Nav = ({ authedUser, users }) =>{
         user = users[authedUser];
     }
 
+    const handleLogout = (e) => {
+        e.preventDefault();
+
+        dispatch(resetAuthedUser());
+        navigate("/");
+    }
+
     return (
-        <div className="nav-container">
+        <Fragment>
             {user && (
-                <div>
+                <div className="nav-container">
                     <Link to="/">Home</Link>
                     <Link to="/leaderboard">Leaderboard</Link>
                     <Link to="/new">New</Link>
                     <span>{user.id}</span>
-                    <Link to="/logout">Logout</Link>   
+                    <span onClick={handleLogout}>Logout</span>
                 </div>             
             )}
-        </div>        
+        </Fragment>
     );
 }
 
