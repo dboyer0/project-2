@@ -1,11 +1,18 @@
 import { Fragment, useEffect } from "react";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Nav from "./Nav";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Leaderboard from "./Leaderboard";
+
+// if authedUser = true, show components, else redirect to login
+const RequireAuth = ({ children, authedUser }) => {
+  const location = useLocation();
+
+  return authedUser ? children : <Navigate to="/login" replace state={{ path: location.pathname }} />
+}
 
 const App = ({ dispatch, authedUser }) => {
 
@@ -29,12 +36,20 @@ const App = ({ dispatch, authedUser }) => {
           <Route
             path="/"
             exact
-            element={<Dashboard />}
+            element={
+              <RequireAuth authedUser={authedUser}>
+                <Dashboard />
+              </RequireAuth>
+            }
           />
 
           <Route
             path="/leaderboard"
-            element={<Leaderboard />}
+            element={
+              <RequireAuth authedUser={authedUser}>
+                <Leaderboard />
+              </RequireAuth>              
+            }
           />
         </Routes>
       </div>
