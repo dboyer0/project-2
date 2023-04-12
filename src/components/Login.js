@@ -4,10 +4,12 @@ import {
     useState
 } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 
 const Login = ({ dispatch, users }) => {
 
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -25,6 +27,7 @@ const Login = ({ dispatch, users }) => {
         const user = users[username];
         if(user && user.password === password){
             dispatch(setAuthedUser(username));
+            navigate("/");
         } //TODO handle error/failed attempt
     };
 
