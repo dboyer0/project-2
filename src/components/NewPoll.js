@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { handleAddPoll } from "../actions/polls";
@@ -51,6 +52,8 @@ const NewPoll = ({ dispatch }) =>{
     );
 }
 
-
+NewPoll.propTypes = {
+    dispatch: PropTypes.func.isRequired
+};
 
 export default connect()(NewPoll);

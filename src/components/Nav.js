@@ -27,7 +27,7 @@ const Nav = ({ authedUser, users, dispatch }) =>{
                 <div className="nav-container">
                     <Link to="/">Home</Link>
                     <Link to="/leaderboard">Leaderboard</Link>
-                    <Link to="/new">New</Link>
+                    <Link to="/add">New</Link>
                     <span>{user.id}</span>
                     <span onClick={handleLogout}>Logout</span>
                 </div>             

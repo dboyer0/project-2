@@ -54,7 +54,7 @@ const App = ({ dispatch, authedUser }) => {
           />
 
           <Route
-            path="/new"
+            path="/add"
             element={
               <RequireAuth authedUser={authedUser}>
                 <NewPoll />
