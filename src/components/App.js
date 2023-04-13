@@ -6,6 +6,7 @@ import Nav from "./Nav";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Leaderboard from "./Leaderboard";
+import NewPoll from "./NewPoll";
 
 // if authedUser = true, show components, else redirect to login
 const RequireAuth = ({ children, authedUser }) => {
@@ -51,6 +52,15 @@ const App = ({ dispatch, authedUser }) => {
               </RequireAuth>              
             }
           />
+
+          <Route
+            path="/new"
+            element={
+              <RequireAuth authedUser={authedUser}>
+                <NewPoll />
+              </RequireAuth>              
+            }
+          />          
         </Routes>
       </div>
     </Fragment>
