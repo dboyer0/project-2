@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { connect } from "react-redux";
+import { handleAddPoll } from "../actions/polls";
+import { useNavigate } from "react-router-dom";
 
-const NewPoll = () =>{
+const NewPoll = ({ dispatch }) =>{
+    const navigate = useNavigate();
 
     const [option1, setOption1] = useState();
     const [option2, setOption2] = useState();
@@ -16,7 +19,8 @@ const NewPoll = () =>{
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log("Poll submitted");
+        dispatch(handleAddPoll(option1, option2));
+        navigate("/");
     }
 
     return (

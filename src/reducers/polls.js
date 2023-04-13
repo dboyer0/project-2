@@ -1,5 +1,6 @@
 import {
-    RECEIVE_POLLS
+    RECEIVE_POLLS,
+    ADD_POLL
 } from "../actions/polls";
 
 const polls = (state = {}, action) => {
@@ -9,6 +10,11 @@ const polls = (state = {}, action) => {
                 ...state,
                 ...action.polls
             };
+        case ADD_POLL:
+            return {
+                ...state,
+                [action.poll.id]: action.poll
+            };            
         default:
             return state;
     }
