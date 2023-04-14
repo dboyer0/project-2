@@ -1,23 +1,18 @@
 import { connect } from "react-redux";
 
-const Poll = ({ poll, author }) => {
+const Poll = ({ id }) => {
 
-    console.log("This Poll: ", poll);
+    console.log("This Poll id: ", id);
     
     return (
         <div className="poll-container">
-            <h1>Poll create by {author}</h1>
+            <h1>Poll {id} </h1>
         </div>
     );
 }
 
-const mapStateToProps = ({ polls, author }, { id }) => {
-    const poll = polls[id];
+const mapStateToProps = ({ id }) => {
 
-    return {
-        poll: poll,
-        author: poll ? users[poll.author] : null
-    };
-}
+};
 
 export default connect(mapStateToProps)(Poll);

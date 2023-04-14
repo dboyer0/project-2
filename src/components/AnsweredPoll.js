@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 
-const UnansweredPoll = ({ id }) => {
+const AnsweredPoll = ({ id }) => {
 
-    console.log("This Unanswered Poll id: ", id);
+    console.log("This Answered Poll id: ", id);
     
     return (
         <div className="poll-container">
-            <h1>Unanswered Poll {id} </h1>
+            <h1>Answered Poll {id} </h1>
         </div>
     );
 }
@@ -17,4 +17,4 @@ const mapStateToProps = ({ id }) => {
     };
 };
 
-export default connect(mapStateToProps)(UnansweredPoll);
+export default connect(mapStateToProps)(AnsweredPoll);
