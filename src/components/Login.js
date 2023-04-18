@@ -32,9 +32,29 @@ const Login = ({ dispatch, users }) => {
         } //TODO handle error/failed attempt
     };
 
-    console.log("Users list: ", users);
-    console.log("Username: ", username);
-    console.log("Password: ", password);
+    const testCredentials = [
+        {
+            username: "tylermcginnis",
+            pasword: "abc321"
+        },
+        {
+            username: "sarahedo",
+            pasword: "password123"
+        },
+        {
+            username: "zoshikanlu",
+            pasword: "pass246"
+        }
+    ];
+
+    // const demoClick = (e) => {
+    //     e.preventDefault();
+
+    //     // setUsername(testCredentials[e.target.id].username);
+    //     console.log("DEMO USERNAME: ", testCredentials[e.target.id].username);
+    //     // setPassword(testCredentials[e.target.id].password);
+    //     console.log("DEMO PASSWORD: ", testCredentials[e.target.id].password);
+    // }
 
     return (
         <Fragment>
@@ -67,6 +87,15 @@ const Login = ({ dispatch, users }) => {
                     Login
                 </button>
             </form>
+
+            <ul>
+                {testCredentials.map(testUser => (
+                    <li key={testUser.pasword}>Username: {testUser.username}, Password: {testUser.pasword}, <button id={testUser.username} onClick={() => {
+                        dispatch(setAuthedUser(testUser.username));
+                        navigate("/");
+                    }}>Use This Demo Account</button></li>
+                ))}
+            </ul>
         </Fragment>
     );
 }
