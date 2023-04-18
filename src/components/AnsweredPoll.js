@@ -6,7 +6,7 @@ const AnsweredPoll = ({ id, author }) => {
     
     return (
         <div className="poll-container">
-            <h1>Poll by {author}</h1>
+            <h1>Poll by {author.name}</h1>
             <h3>Answered Poll {id} </h3>
         </div>
     );

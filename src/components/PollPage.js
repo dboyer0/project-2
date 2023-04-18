@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import AnsweredPoll from "./AnsweredPoll";
 import UnansweredPoll from "./UnansweredPoll";
+import defaultAvatar from "../assets/defaultAvatar.jpg";
 
 const withRouter = (Component) => {
     const ComponentWithRouterProp = (props) => {
@@ -23,9 +24,17 @@ const PollPage = ({ id, answeredPoll, author }) => {
     
     return (
         <div className="poll-container">
+
             <div>
-                {answeredPoll ? <AnsweredPoll author={author} id={id} /> : <UnansweredPoll author={author} id={id} />}
+                <h2>Poll by {author.name} </h2>
+                <img
+                    src={author.avatarURL ? author.avatarURL : defaultAvatar}
+                    alt="poll author avatar"
+                />
+                <h3 className="m-2">Would You Rather?</h3>
+                {answeredPoll ? <AnsweredPoll id={id} /> : <UnansweredPoll id={id} />}
             </div>
+
         </div>
     );
 }
