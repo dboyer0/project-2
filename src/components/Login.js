@@ -6,6 +6,7 @@ import {
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
+import defaultAvatar from "../assets/defaultAvatar.jpg";
 
 const Login = ({ dispatch, users }) => {
 
@@ -37,7 +38,11 @@ const Login = ({ dispatch, users }) => {
 
     return (
         <Fragment>
-            <img src="" alt="Default Avatar" />
+            <img
+                src={defaultAvatar}
+                alt="author"
+                style={{maxWidth: "100px", maxHeight: "100px"}}
+            />
 
             <form>
                 <input
