@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { formatDate } from "../utils/helpers";
@@ -28,6 +29,12 @@ const mapStateToProps = ({ polls, users }, { id }) => {
       poll: poll,
       author: poll ? users[poll.author] : null,
     };
+}
+
+PollPreview.propTypes = {
+    poll: PropTypes.object.isRequired,
+    author: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired
 }
 
 export default connect(mapStateToProps)(PollPreview);
