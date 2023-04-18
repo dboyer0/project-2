@@ -25,3 +25,13 @@ a:hover {
 a:active {
  color: red;
 }
+
+.poll-container {
+  display: flex;
+  background-color: blueviolet;
+  flex-direction: column;
+  align-items:center;
+  border: 3px solid white;
+  margin-bottom: 5%;
+  padding: 1%;
+}
