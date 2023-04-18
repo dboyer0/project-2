@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 const UnansweredPoll = ({ id, dispatch, poll }) => {
@@ -27,6 +28,12 @@ const mapStateToProps = ({ polls }, { id }) => {
     return {
       poll,
     };
-  }
+}
+
+UnansweredPoll.propTypes = {
+    id: PropTypes.string.isRequired,
+    poll: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps)(UnansweredPoll);
