@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 
-const AnsweredPoll = ({ id }) => {
+const AnsweredPoll = ({ id, author }) => {
 
     console.log("This Answered Poll id: ", id);
     
     return (
         <div className="poll-container">
-            <h1>Answered Poll {id} </h1>
+            <h1>Poll by {author}</h1>
+            <h3>Answered Poll {id} </h3>
         </div>
     );
 }

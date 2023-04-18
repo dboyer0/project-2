@@ -4,6 +4,8 @@ import {
     useLocation,
     useParams
 } from "react-router-dom";
+import AnsweredPoll from "./AnsweredPoll";
+import UnansweredPoll from "./UnansweredPoll";
 
 const withRouter = (Component) => {
     const ComponentWithRouterProp = (props) => {
@@ -17,19 +19,31 @@ const withRouter = (Component) => {
     return ComponentWithRouterProp;
 }
 
-const PollPage = () => {
-
-    console.log("This Poll: ", poll);
+const PollPage = ({ id, answeredPoll, author }) => {
     
     return (
         <div className="poll-container">
-            <h1>Poll create by {author}</h1>
+            <div>
+                {answeredPoll ? <AnsweredPoll author={author} id={id} /> : <UnansweredPoll author={author} id={id} />}
+            </div>
         </div>
     );
 }
 
-const mapStateToProps = () => {
-
-}
+const mapStateToProps = ({ authedUser, polls, users }, props) => {
+    const { id } = props.router.params;
+    const poll = polls[id];
+  
+    let answeredPoll = null;
+    if (authedUser && users) {
+      answeredPoll = users[authedUser].answers[id] ? true : false;
+    }
+  
+    return {
+      id,
+      answeredPoll,
+      author: poll ? users[poll.author] : null,
+    };
+};
 
 export default withRouter(connect(mapStateToProps)(PollPage));

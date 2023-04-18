@@ -45,6 +45,7 @@ const Login = ({ dispatch, users }) => {
                     type="text"
                     placeholder="Enter Username"
                     onChange={handleChange}
+                    autoFocus
                 />
 
                 <input
