@@ -47,15 +47,6 @@ const Login = ({ dispatch, users }) => {
         }
     ];
 
-    // const demoClick = (e) => {
-    //     e.preventDefault();
-
-    //     // setUsername(testCredentials[e.target.id].username);
-    //     console.log("DEMO USERNAME: ", testCredentials[e.target.id].username);
-    //     // setPassword(testCredentials[e.target.id].password);
-    //     console.log("DEMO PASSWORD: ", testCredentials[e.target.id].password);
-    // }
-
     return (
         <Fragment>
             <img
