@@ -29,7 +29,12 @@ const Login = ({ dispatch, users }) => {
         if(user && user.password === password){
             dispatch(setAuthedUser(username));
             navigate("/");
-        } //TODO handle error/failed attempt
+        } else {
+            setUsername("");
+            setPassword("");
+            dispatch(setAuthedUser(null));
+            alert("Failed to login.  Verify the credentials you entered.");
+        }
     };
 
     const testCredentials = [
