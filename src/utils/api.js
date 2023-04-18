@@ -1,10 +1,11 @@
 import {
   _getUsers,
   _getQuestions,
-  _saveQuestion
+  _saveQuestion,
+  _saveQuestionAnswer
 } from "./_DATA.js";
 
-export function getInitialData() {
+export const getInitialData = () => {
   return Promise.all([
     _getUsers(),
     _getQuestions()
@@ -16,4 +17,8 @@ export function getInitialData() {
 
 export const savePoll = (poll) => {
   return _saveQuestion(poll);
+}
+
+export const savePollAnswer = (answer) => {
+  return _saveQuestionAnswer(answer);
 }

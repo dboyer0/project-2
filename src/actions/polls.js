@@ -1,8 +1,9 @@
-import { savePoll } from "../utils/api";
-import { addPollToUser } from "./users";
+import { savePoll, savePollAnswer } from "../utils/api";
+import { addPollToUser, addAnswerToUser } from "./users";
 
 export const RECEIVE_POLLS = "RECEIVE_POLLS";
 export const ADD_POLL = "ADD_POLL";
+export const ADD_ANSWER = "ADD_ANSWER";
 
 export const receivePolls = (polls) => {
     return {
@@ -18,6 +19,15 @@ export const addPoll = (poll) => {
     };
 }
 
+export const addAnswer = ({ qid, answer, authedUser }) => {
+    return {
+      type: ADD_ANSWER,
+      qid,
+      answer,
+      authedUser,
+    };
+}
+
 export const handleAddPoll = (option1, option2) => {
     return (dispatch, getState) => {
         const { authedUser } = getState();
@@ -30,4 +40,26 @@ export const handleAddPoll = (option1, option2) => {
             .then(poll => dispatch(addPoll(poll)))
             .then(poll => dispatch(addPollToUser(poll)));
     }
+}
+
+export const handleAddAnswer = (qid, answer) => {
+    return (dispatch, getState) => {
+      const { authedUser } = getState();
+  
+      return savePollAnswer({
+        qid,
+        answer,
+        authedUser,
+      })
+        .then(() =>
+          dispatch(
+            addAnswer({
+              qid,
+              answer,
+              authedUser,
+            })
+          )
+        )
+        .then(() => dispatch(addAnswerToUser({ qid, answer, authedUser })))
+    };
 }

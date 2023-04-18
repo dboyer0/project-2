@@ -1,21 +1,26 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { handleAddAnswer } from "../actions/polls";
 
 const UnansweredPoll = ({ id, dispatch, poll }) => {
 
-    console.log("This Unanswered Poll: ", poll);
+    const handleClick = (e) => {
+        e.preventDefault();
+    
+        dispatch(handleAddAnswer(id, e.target.id));
+    };
     
     return (
         <div>
             <h3>{poll.optionOne.text}</h3>
 
-            <button id="optionOne" onClick={() => {}}>
+            <button id="optionOne" onClick={handleClick}>
                 Select Option 1
             </button>
 
             <h3>{poll.optionTwo.text}</h3>
 
-            <button id="optionTwo" onClick={() => {}}>
+            <button id="optionTwo" onClick={handleClick}>
                 Select Option 2
             </button>
         </div>
