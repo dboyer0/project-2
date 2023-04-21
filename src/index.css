@@ -35,3 +35,7 @@ a:active {
   margin-bottom: 5%;
   padding: 1%;
 }
+
+tr:nth-child(even){
+  background-color: lightslategray;
+}
