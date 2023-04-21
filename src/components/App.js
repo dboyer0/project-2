@@ -8,6 +8,7 @@ import Dashboard from "./Dashboard";
 import Leaderboard from "./Leaderboard";
 import NewPoll from "./NewPoll";
 import PollPage from "./PollPage";
+import NotFound from "./NotFound";
 
 // if authedUser = true, show components, else redirect to login
 const RequireAuth = ({ children, authedUser }) => {
@@ -47,6 +48,7 @@ const App = ({ dispatch, authedUser }) => {
 
           <Route
             path="/leaderboard"
+            exact
             element={
               <RequireAuth authedUser={authedUser}>
                 <Leaderboard />
@@ -56,6 +58,7 @@ const App = ({ dispatch, authedUser }) => {
 
           <Route
             path="/add"
+            exact
             element={
               <RequireAuth authedUser={authedUser}>
                 <NewPoll />
@@ -70,7 +73,12 @@ const App = ({ dispatch, authedUser }) => {
                 <PollPage />
               </RequireAuth>              
             }
-          />                
+          />
+
+          <Route
+            path="*"
+            element={<NotFound />}
+          />           
         </Routes>
       </div>
     </Fragment>
