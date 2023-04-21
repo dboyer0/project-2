@@ -23,18 +23,24 @@ const withRouter = (Component) => {
 const PollPage = ({ id, answeredPoll, author }) => {
     
     return (
-        <div className="poll-container">
+        <div>
+            {!id || !author ? (
+                <h1>404 Page Not Found</h1>
+            ) : (
+                <div className="poll-container">
 
-            <div>
-                <h2>Poll by {author.name} </h2>
-                <img
-                    src={author.avatarURL ? author.avatarURL : defaultAvatar}
-                    alt="poll author avatar"
-                />
-                <h3 className="m-2">Would You Rather?</h3>
-                {answeredPoll ? <AnsweredPoll id={id} /> : <UnansweredPoll id={id} />}
-            </div>
+                    <div>
+                        <h2>Poll by {author.name} </h2>
+                        <img
+                            src={author.avatarURL ? author.avatarURL : defaultAvatar}
+                            alt="poll author avatar"
+                        />
+                        <h3 className="m-2">Would You Rather?</h3>
+                        {answeredPoll ? <AnsweredPoll id={id} /> : <UnansweredPoll id={id} />}
+                    </div>
 
+                </div>
+            )}
         </div>
     );
 }
