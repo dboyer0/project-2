@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import defaultAvatar from "../assets/defaultAvatar.jpg";
 
 const Leaderboard = ({ users }) => {
 
@@ -25,7 +26,7 @@ const Leaderboard = ({ users }) => {
                     {sortedUsers.map((user) => {
                         return (
                             <tr key={user.id}>
-                                <td>{user.name}<img src={user.avatarURL} alt="User Avatar" style={{ maxWidth: "50px", maxHeight: "50px" }} /></td>
+                                <td>{user.name}<img src={user.avatarURL ? `${user.avatarURL}` : defaultAvatar} alt="User Avatar" style={{ maxWidth: "50px", maxHeight: "50px" }} /></td>
                                 <td>{Object.keys(user.answers).length}</td>
                                 <td>{user.questions.length}</td>
                                 <td>{user.score}</td>
