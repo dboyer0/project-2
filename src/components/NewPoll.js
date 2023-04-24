@@ -29,6 +29,7 @@ const NewPoll = ({ dispatch }) =>{
             <h1>Would you rather?</h1>
 
             <input
+                data-testid="option1-input"
                 id="option1"
                 type="text"
                 placeholder="Enter Option 1"
@@ -36,6 +37,7 @@ const NewPoll = ({ dispatch }) =>{
             />
 
             <input
+                data-testid="option2-input"
                 id="option2"
                 type="text"
                 placeholder="Enter Option 2"
@@ -43,6 +45,7 @@ const NewPoll = ({ dispatch }) =>{
             />
 
             <button
+                data-testid="submit-button"
                 onClick={handleSubmit}
                 disabled={option1 === "" || option2 === ""}
             >
