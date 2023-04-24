@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { connect } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { resetAuthedUser } from "../actions/authedUser";
+import defaultAvatar from "../assets/defaultAvatar.jpg";
 
 const Nav = ({ authedUser, users, dispatch }) =>{
 
@@ -24,14 +25,36 @@ const Nav = ({ authedUser, users, dispatch }) =>{
     return (
         <Fragment>
             {user && (
-                <div className="nav-container">
-                    <Link to="/">Home</Link>
-                    <Link to="/leaderboard">Leaderboard</Link>
-                    <Link to="/add">New</Link>
-                    <span>{user.id}</span>
-                    <span onClick={handleLogout}>Logout</span>
-                </div>             
-            )}
+                <ul>
+                    <li>
+                        <Link to="/" component="a">Home</Link>
+                    </li>
+                    
+                    <li>
+                        <Link to="/leaderboard" component="a">Leaderboard</Link>
+                    </li>
+
+                    <li>
+                        <Link to="/add" component="a">New</Link>
+                    </li>
+
+                    <li style={{ float: "right" }}>
+                        <span onClick={handleLogout}>Logout</span>
+                    </li>
+
+                    <li style={{ float: "right" }}>
+                        <div style={{ display: "flex" }}>
+                            <img
+                                src={users[authedUser].avatarURL ? users[authedUser].avatarURL : defaultAvatar}
+                                alt="user avatar"
+                                style={{ maxWidth: "50px", maxHeight: "50px", borderRadius: "50px" }}
+                            />
+                            <span>{user.id}</span>
+                        </div>
+                    </li>
+
+                </ul>             
+            )}    
         </Fragment>
     );
 }
