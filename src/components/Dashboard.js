@@ -1,20 +1,33 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { connect } from "react-redux";
 import PollPreview from "./PollPreview";
 
 const Dashboard = ({ unansweredPollIds, answeredPollIds }) => {
 
+    const [ showing, setShowing ] = useState("answered");
+
+    const handleToggle = () => {
+        if(showing === "answered"){
+            setShowing("unanswered");
+        } else if (showing === "unanswered"){
+            setShowing("answered");
+        }
+    }
+
     return (
         <div>
             <h1>Dashbboard</h1>
 
-            <h2>Answered Polls</h2>
-            {Object.keys(answeredPollIds).map(key => (
+            <button onClick={handleToggle}>Show {showing === "answered" ? "unasnwered" : "answered"} Polls</button>
+
+            {showing === "answered" && <h2>Answered Polls</h2>}
+            {showing === "answered" && Object.keys(answeredPollIds).map(key => (
                 <PollPreview key={answeredPollIds[key]} id={answeredPollIds[key]} />
             ))}
 
-            <h2>Unanswered Polls</h2>
-            {Object.keys(unansweredPollIds).map(key => (
+            {showing === "unanswered" && <h2>Unanswered Polls</h2>}
+            {showing === "unanswered" && Object.keys(unansweredPollIds).map(key => (
                 <PollPreview key={unansweredPollIds[key]} id={unansweredPollIds[key]} />
             ))}
         </div>
