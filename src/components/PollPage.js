@@ -34,6 +34,7 @@ const PollPage = ({ id, answeredPoll, author }) => {
                         <img
                             src={author.avatarURL ? author.avatarURL : defaultAvatar}
                             alt="poll author avatar"
+                            style={{ maxWidth: "150px", maxHeight: "150px", borderRadius: "100px" }}
                         />
                         <h3 className="m-2">Would You Rather?</h3>
                         {answeredPoll ? <AnsweredPoll id={id} /> : <UnansweredPoll id={id} />}

@@ -14,7 +14,7 @@ const PollPreview = ({ poll, author }) => {
             <img
                 src={avatarImage}
                 alt={author.name}
-                style={{maxWidth: "100px", maxHeight: "100px"}}
+                style={{maxWidth: "100px", maxHeight: "100px", borderRadius: "50px" }}
             />
              <small>{formatDate(poll.timestamp)}</small>
             <Link to={`/question/${poll.id}`}>View Poll</Link>
