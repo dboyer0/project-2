@@ -5,7 +5,7 @@ import PollPreview from "./PollPreview";
 
 const Dashboard = ({ unansweredPollIds, answeredPollIds }) => {
 
-    const [ showing, setShowing ] = useState("answered");
+    const [ showing, setShowing ] = useState("unanswered");
 
     const handleToggle = () => {
         if(showing === "answered"){
