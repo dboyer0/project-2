@@ -62,6 +62,7 @@ const Login = ({ dispatch, users }) => {
 
             <form>
                 <input
+                    data-testid="username-input"
                     id="username"
                     type="text"
                     placeholder="Enter Username"
@@ -70,6 +71,7 @@ const Login = ({ dispatch, users }) => {
                 />
 
                 <input
+                    data-testid="password-input"
                     id="password"
                     type="password"
                     placeholder="Enter Password"
@@ -77,6 +79,7 @@ const Login = ({ dispatch, users }) => {
                 />
 
                 <button
+                    data-testid="login-button"
                     onClick={handleClick}
                     disabled={username === "" || password === ""}
                 >

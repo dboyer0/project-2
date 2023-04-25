@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { handleAddPoll } from "../actions/polls";
 import { useNavigate } from "react-router-dom";
 
-const NewPoll = ({ dispatch }) =>{
+const NewPoll = ({ dispatch }) => {
     const navigate = useNavigate();
 
     const [option1, setOption1] = useState("");
