@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 const NewPoll = ({ dispatch }) =>{
     const navigate = useNavigate();
 
-    const [option1, setOption1] = useState();
-    const [option2, setOption2] = useState();
+    const [option1, setOption1] = useState("");
+    const [option2, setOption2] = useState("");
 
     const handleChange = (e) => {
         const text = e.target.value;

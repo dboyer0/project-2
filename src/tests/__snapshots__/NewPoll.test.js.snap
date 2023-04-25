@@ -23,6 +23,7 @@ Object {
         />
         <button
           data-testid="submit-button"
+          disabled=""
         >
           Add Poll
         </button>
@@ -48,6 +49,7 @@ Object {
       />
       <button
         data-testid="submit-button"
+        disabled=""
       >
         Add Poll
       </button>

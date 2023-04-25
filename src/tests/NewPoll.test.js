@@ -1,5 +1,5 @@
 import * as React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -31,6 +31,20 @@ describe("NewPoll", () => {
 
   it("matches the snapshot", () => {
     expect(component).toMatchSnapshot();
+  });
+
+  it("will enable the submit button when both options are available", async () => {
+    fireEvent.change(inputOption1, { target: { value: "option one test" } });
+    fireEvent.change(inputOption2, { target: { value: "option two test" } });
+
+    expect(submitButton).toBeEnabled();
+  });
+
+  it('will disable the submit button when one of the options are not available', () => {
+    fireEvent.change(inputOption1, { target: { value: "option one test" } });
+    fireEvent.change(inputOption2, { target: { value: "" } });
+
+    expect(submitButton).toBeDisabled();
   });
 
 });
